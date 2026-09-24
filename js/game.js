@@ -11,7 +11,7 @@ export class Game {
         // Set the initial speed in milliseconds, direction to "RIGHT"
         //because the snake starts moving to the right, and nextDirection to "RIGHT"
         // because the snake starts moving to the right
-        this.speed = 150;
+        this.speed = 200;
         this.direction = "RIGHT";
         this.nextDirection = "RIGHT";
         
@@ -23,7 +23,26 @@ export class Game {
         //craete food
 
     }
+
     //set direction
+       setDirection(direction) {
+
+        const opposite = { // Define opposite directions
+
+            UP: "DOWN",
+            DOWN: "UP",
+            LEFT: "RIGHT",
+            RIGHT: "LEFT"
+
+        };
+
+        if (opposite[this.direction] === direction) {
+            return;
+        }
+
+        this.nextDirection = direction;
+
+    }
 
     //update the game state
     update() {

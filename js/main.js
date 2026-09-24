@@ -1,11 +1,12 @@
 import { Game } from './game.js';
+import { setupInput } from './input.js';
 const board = document.querySelector('#game-board');
 let game;
 let interval;
 
 const createBoard = () => {
-    for (let x = 0; x < 20; x++){
-        for (let y = 0; y < 20; y++){
+    for (let y = 0; y < game.rows; y++){
+        for (let x = 0; x < game.columns; x++){
             const cell = document.createElement('div');
             cell.classList.add('cell');
             cell.dataset.x = x;
@@ -84,6 +85,16 @@ const startGame = () => {
 
         game.speed
     );
+
+    setupInput(direction => {
+
+            game.setDirection(
+                direction
+            );
+
+        }
+    );
+
 }
 
 startGame();
